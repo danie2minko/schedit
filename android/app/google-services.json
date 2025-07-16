@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1003477829831",
+    "project_id": "schedit-cdd36",
+    "storage_bucket": "schedit-cdd36.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003477829831:android:47149441f95d26f03f96e2",
+        "android_client_info": {
+          "package_name": "com.example.shedit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlirKSURb9l058Ga2ocyFehVZ7EEcOozo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
