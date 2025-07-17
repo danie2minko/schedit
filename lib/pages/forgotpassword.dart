@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shedit/components/buttons/mybuttons.dart';
 import 'package:shedit/components/textfield.dart';
@@ -14,6 +15,47 @@ class _ForgotpasswordState extends State<Forgotpassword> {
 
   //controller
   final TextEditingController _emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  bool isValidEmail(String email) {
+    return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
+  }
+
+  String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'L\'email est requis';
+    }
+    if (!isValidEmail(value)) {
+      return 'Veuillez entrer une adresse email valide';
+    }
+    return null;
+  }
+
+  Future<String?> Resetpwd({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: email.trim(),
+      );
+      return null; // Succès
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'invalid-email':
+          return 'L\'adresse e-mail n\'est pas valide.';
+        default:
+          return 'Une erreur est survenue lors de l\'inscription.';
+      }
+    } catch (e) {
+      return 'Une erreur inconnue est survenue.';
+    }
+  }
   
 
   @override
@@ -21,19 +63,18 @@ class _ForgotpasswordState extends State<Forgotpassword> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         title: Row(
           children: [
-            IconButton(
-              onPressed: ()=>{}, 
-              icon: Icon(Icons.arrow_back, color: Color.fromRGBO(74, 103, 222, 1),
+            
+            
+            Padding(
+              padding: EdgeInsets.only(left: 230),
+              child: IconButton(onPressed: ()=>{}, 
+              icon: Icon(Icons.dark_mode_outlined, color: Color.fromRGBO(74, 103, 222, 1),
               )
               ),
-            SizedBox(width: 20,),
-            IconButton(onPressed: ()=>{}, 
-            icon: Icon(Icons.dark_mode_outlined, color: Color.fromRGBO(74, 103, 222, 1),
-            )
             )
           ],
         ),
@@ -66,7 +107,9 @@ class _ForgotpasswordState extends State<Forgotpassword> {
           
               //image
               Container(
-                height: 300,
+                //color: Color.fromRGBO(74, 103, 222, 1),
+                height: 400,
+                child: Image.asset('assets/images/forgot-password.png'),
               ),
           
               Row(
@@ -98,14 +141,14 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                 hintText: 'Enter email address',
                 controller: _emailController,
                 obscureText: false,),
-              SizedBox(height: 15,),
+              SizedBox(height: 20,),
           
               //button
               Center(child: Mybuttons(text: 'Send Code', onTap: ()=>{
                 Navigator.pushNamed(context, '/verification')
               })),
 
-              Container(height: 150,),
+              Container(height: 100,),
 
               Padding(
                 padding: EdgeInsetsGeometry.only(left: 120),

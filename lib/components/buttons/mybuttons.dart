@@ -11,18 +11,21 @@ class Mybuttons extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 50,
-        width: 250,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: Color.fromRGBO(74, 103, 222, 1),
-          borderRadius: BorderRadius.circular(6)
-          ),
+          borderRadius: BorderRadius.circular(6),
+        ),
         child: Center(
-          child: Text(text, style: TextStyle(
-            fontFamily: 'poppins',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.white
-          ),),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontFamily: 'poppins',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shedit/components/buttons/mybuttons.dart';
 import 'package:shedit/components/textfield.dart';
@@ -14,21 +15,52 @@ class _SetnewpwdState extends State<Setnewpwd> {
   //controllers
   final TextEditingController _newPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
-  
+
+  @override
+  void dispose (){
+    _newPasswordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  String? validateNewPassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Le mot de passe est requis';
+    }
+    if (value.length < 6) {
+      return 'Le mot de passe doit contenir au moins 6 caractères';
+    }
+    return null;
+  }
+
+  String? validateConfirmPassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'La confirmation du mot de passe est requise';
+    }
+    if (value != _newPasswordController.text) {
+      return 'Les mots de passe ne correspondent pas';
+    }
+    return null;
+  }
+
+  Future<void> updatePassword(String newPassword) async {
+  final user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    await user.updatePassword(newPassword);
+}
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         title: Row(
           children: [
-            IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(Icons.arrow_back, color: Color.fromRGBO(74, 103, 222, 1)),
-            ),
-            SizedBox(width: 20),
+            
+            SizedBox(width: 230),
             IconButton(
               onPressed: () => {},
               icon: Icon(Icons.dark_mode_outlined, color: Color.fromRGBO(74, 103, 222, 1)),
@@ -68,6 +100,7 @@ class _SetnewpwdState extends State<Setnewpwd> {
                  //image
                  Container(
                   height: 300,
+                  child: Image.asset('assets/images/confirmation.png'),
                  ),
 
                 //textformfield
@@ -81,7 +114,8 @@ class _SetnewpwdState extends State<Setnewpwd> {
                 Textfield(
                   hintText: 'Create new password',
                   controller: _newPasswordController,
-                  obscureText: true,),
+                  obscureText: true,
+                  ),
                 SizedBox(height: 20,),
                 Text('Confirm Password',
                   style: TextStyle(
@@ -90,10 +124,12 @@ class _SetnewpwdState extends State<Setnewpwd> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+
                 Textfield(
                   hintText: 'Re-enter password',
                   controller: _confirmPasswordController,
-                  obscureText: true,),
+                  obscureText: true,
+                ),
               
                 //button
                 SizedBox(height: 20),

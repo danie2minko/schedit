@@ -19,18 +19,16 @@ class _VerificationState extends State<Verification> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         title: Row(
           children: [
-            IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(Icons.arrow_back, color: Color.fromRGBO(74, 103, 222, 1)),
-            ),
-            SizedBox(width: 20),
-            IconButton(
-              onPressed: () => {},
-              icon: Icon(Icons.dark_mode_outlined, color: Color.fromRGBO(74, 103, 222, 1)),
+            Padding(
+              padding: EdgeInsets.only(left: 230),
+              child: IconButton(
+                onPressed: () => {},
+                icon: Icon(Icons.dark_mode_outlined, color: Color.fromRGBO(74, 103, 222, 1)),
+              ),
             ),
           ],
         ),
@@ -67,6 +65,7 @@ class _VerificationState extends State<Verification> {
                   //image
                    Container(
                     height: 300,
+                    child: Image.asset('assets/images/message-sent.png'),
                    ),
                   //text
                    Text("We sent a code to ",
@@ -138,7 +137,7 @@ class _VerificationState extends State<Verification> {
                  ),
               
                   //button
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   Mybuttons(text: 'Continue', onTap: ()=>{
                     Navigator.pushNamed(context, '/setnewpwd')
                   }),

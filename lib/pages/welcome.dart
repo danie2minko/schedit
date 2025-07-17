@@ -12,10 +12,10 @@ class Welcome extends StatefulWidget {
 class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         title: Row(
           children: [
@@ -27,13 +27,15 @@ class _WelcomeState extends State<Welcome> {
                 fontWeight: FontWeight.bold,
                 color: Color.fromRGBO(74, 103, 222, 1),
               ),
-              ),
-              SizedBox(width: 185,),
-              IconButton(onPressed: (){}, 
+            ),
+            SizedBox(width: 185),
+            IconButton(
+              onPressed: () {},
               icon: Icon(
                 Icons.dark_mode_outlined,
-                color: Color.fromRGBO(74, 103, 222, 1),)
-                )
+                color: Color.fromRGBO(74, 103, 222, 1),
+              ),
+            ),
           ],
         ),
       ),
@@ -45,61 +47,80 @@ class _WelcomeState extends State<Welcome> {
               Positioned(
                 left: 0,
                 child: Text(
-                    'Login or Sign up to continue',
-                    style: TextStyle(
-                      fontFamily: 'roboto',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                    ),
+                  'Login or Sign up to continue',
+                  style: TextStyle(
+                    fontFamily: 'roboto',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
               ),
-              
+
               Center(
                 child: Column(
                   children: [
-                    
-                        
                     // image space
-                        Container(
-                          height: 300,
-                        
-                         
-                          ),
-                   // text
-                   Text(
-                    'Schedit',
-                    style: TextStyle(
-                      fontFamily: 'roboto',
-                      fontSize: 37,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(74, 103, 222, 1),
+                    Container(
+                      height: 400,
+                      child: Image.asset('assets/images/festivities.png'),
                     ),
+                    // text
+                    Text(
+                      'Schedit',
+                      style: TextStyle(
+                        fontFamily: 'roboto',
+                        fontSize: 37,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(74, 103, 222, 1),
+                      ),
                     ),
-                    Text('A Family Scheduling App', style: TextStyle(fontFamily: 'poppins',fontWeight: FontWeight.bold,fontSize: 18),),
-                    Text('For Parents', style: TextStyle(fontFamily: 'poppins',fontWeight: FontWeight.bold,fontSize: 18),),
-                     SizedBox(height: 40,),  
-          
-                    // bottons
-                    Mybuttons(text: 'Create Account', onTap: ()=>{
-                      Navigator.pushNamed(context, '/createaccount')
-                    },
-                    ),
-                    SizedBox(height: 5,),
-                    Button(text: 'Already have an account', onTap: () => {
-                      Navigator.pushNamed(context, '/loginaccount')
-                    },),
-                    SizedBox(height: 10,),
-                        
-                    GestureDetector(
-                      child: Text('Continue as a guest?', style: TextStyle(
+                    Text(
+                      'A Family Scheduling App',
+                      style: TextStyle(
                         fontFamily: 'poppins',
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      )),
-                    )
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      'For Parents',
+                      style: TextStyle(
+                        fontFamily: 'poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(height: 40),
+
+                    // bottons
+                    Mybuttons(
+                      text: 'Create Account',
+                      onTap: () => {
+                        Navigator.pushNamed(context, '/createaccount'),
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    Button(
+                      text: 'Already have an account',
+                      onTap: () => {
+                        Navigator.pushNamed(context, '/loginaccount'),
+                      },
+                    ),
+                    SizedBox(height: 20),
+
+                    GestureDetector(
+                      child: Text(
+                        'Continue as a guest?',
+                        style: TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

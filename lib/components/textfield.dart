@@ -4,11 +4,13 @@ class Textfield extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final bool obscureText;
+
+
   const Textfield({
     super.key, 
     required this.hintText, 
     required this.controller, 
-    required this.obscureText
+    required this.obscureText,
     });
 
   @override
@@ -43,6 +45,8 @@ class Textfield extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
           borderSide: BorderSide(color: Colors.grey.shade300, width: 2),
         ),
+        filled: true,
+                  fillColor: Colors.white,
         hintStyle: TextStyle(
           color: Colors.grey.shade300,
           fontFamily: 'poppins',

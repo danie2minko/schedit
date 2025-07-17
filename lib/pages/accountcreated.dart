@@ -14,18 +14,16 @@ class _AccountcreatedState extends State<Accountcreated> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         title: Row(
           children: [
-            IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(Icons.arrow_back, color: Color.fromRGBO(74, 103, 222, 1)),
-            ),
-            SizedBox(width: 20),
-            IconButton(
-              onPressed: () => {},
-              icon: Icon(Icons.dark_mode_outlined, color: Color.fromRGBO(74, 103, 222, 1)),
+            Padding(
+              padding: EdgeInsets.only(left: 230),
+              child: IconButton(
+                onPressed: () => {},
+                icon: Icon(Icons.dark_mode_outlined, color: Color.fromRGBO(74, 103, 222, 1)),
+              ),
             ),
           ],
         ),
@@ -61,7 +59,9 @@ class _AccountcreatedState extends State<Accountcreated> {
                 children: [
                   
                   //image
-                    Container(height: 300,),
+                    Container(height: 300,
+                    child: Image.asset('assets/images/winners.png'),
+                    ),
                   //text
                   Text('Your account has been created ',
                     style: TextStyle(
