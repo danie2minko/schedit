@@ -96,7 +96,8 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                 ),
               Textfield(
                 hintText: 'Enter email address',
-                controller: _emailController,),
+                controller: _emailController,
+                obscureText: false,),
               SizedBox(height: 15,),
           
               //button

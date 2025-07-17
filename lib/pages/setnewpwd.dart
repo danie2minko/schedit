@@ -80,7 +80,8 @@ class _SetnewpwdState extends State<Setnewpwd> {
                 ),
                 Textfield(
                   hintText: 'Create new password',
-                  controller: _newPasswordController,),
+                  controller: _newPasswordController,
+                  obscureText: true,),
                 SizedBox(height: 20,),
                 Text('Confirm Password',
                   style: TextStyle(
@@ -91,7 +92,8 @@ class _SetnewpwdState extends State<Setnewpwd> {
                 ),
                 Textfield(
                   hintText: 'Re-enter password',
-                  controller: _confirmPasswordController,),
+                  controller: _confirmPasswordController,
+                  obscureText: true,),
               
                 //button
                 SizedBox(height: 20),

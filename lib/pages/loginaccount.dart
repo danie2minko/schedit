@@ -113,12 +113,14 @@ class _LoginaccountState extends State<Loginaccount> {
               ),
             Textfield(
               hintText: 'Enter email address',
-              controller: _emailController,),
+              controller: _emailController,
+              obscureText: false,),
             SizedBox(height: 15,),
             Text('Password', style: TextStyle(fontSize: 18)),
             Textfield(
               hintText: 'Enter password',
-              controller: _passwordController,),
+              controller: _passwordController,
+              obscureText: true,),
             Padding(
               padding: EdgeInsets.only(left: 225),
               child: GestureDetector(

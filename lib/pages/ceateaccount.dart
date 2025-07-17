@@ -116,18 +116,21 @@ class _CeateaccountState extends State<Ceateaccount> {
               Textfield(
                 hintText: 'Enter email adress',
                 controller: _emailController,
+                obscureText: false,
               ),
               SizedBox(height: 15),
               Text('Password', style: TextStyle(fontSize: 18)),
               Textfield(
                 hintText: 'Create password',
                 controller: _passwordController,
+                obscureText: true,
               ),
               SizedBox(height: 15),
               Text('Confirm Password', style: TextStyle(fontSize: 18)),
               Textfield(
                 hintText: 'Re-enter password',
                 controller: _confirmPasswordController,
+                obscureText: true,
               ),
               SizedBox(height: 10),
 

@@ -92,14 +92,16 @@ class _VerificationState extends State<Verification> {
                    child: Row(
                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                    children: List.generate(4, (index) {
-                    return SizedBox(
+                    return Container(
                       width: 60,
+                      height: 70,
                       child: TextFormField(
                         controller: _codeControllers[index],
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.center,
                         maxLength: 1,
                         decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 40),
                           counterText: '',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
