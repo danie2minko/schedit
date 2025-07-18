@@ -287,7 +287,7 @@ class _LoginaccountState extends State<Loginaccount> {
                             });
 
                             if (error == null) {
-                              Navigator.pushNamed(context, '/welcome');
+                              Navigator.pushNamed(context, '/accountcreated');
                             } else {
                               ScaffoldMessenger.of(
                                 context,
